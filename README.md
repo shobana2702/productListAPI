@@ -5,4 +5,4 @@
 
 ## Products List API Functionalities:
 
-1.  List products
+1.  List all the products

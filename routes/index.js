@@ -15,9 +15,14 @@ router.get("/", function(req, res, next) {
         .collection("Products")
         .find()
         .toArray(function(err, productResults) {
-          console.log("Got Products list from db", productResults);
-          res.json(productResults);
-          client.close();
+          if (err) {
+            console.error(err);
+            res.json(err);
+          } else {
+            console.log("Got Products list from db", productResults);
+            res.json(productResults);
+            client.close();
+          }
         });
     }
   });
