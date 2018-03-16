@@ -1,25 +1,27 @@
 const express = require("express");
 const router = express.Router();
 const mongoClient = require("mongodb").MongoClient;
-
+const mongoUrl = "mongodb://localhost:27017";
+const dbName = "OnlineFruitStore";
+const prodDocName = "Products";
 //1.list Product
 router.get("/", function(req, res, next) {
-  mongoClient.connect("mongodb://localhost:27017", (err, client) => {
+  mongoClient.connect(mongoUrl, (err, client) => {
     if (err) {
       console.error(err);
-      res.json(err);
+      res.send(err);
     } else {
-      db = client.db("OnlineFruitStore");
+      db = client.db(dbName);
       console.log("Connected to DB");
       db
-        .collection("Products")
+        .collection(prodDocName)
         .find()
         .toArray(function(err, productResults) {
           if (err) {
             console.error(err);
-            res.json(err);
+            res.send(err);
           } else {
-            console.log("Got Products list from db", productResults);
+            console.log("Products list from db", productResults);
             res.json(productResults);
             client.close();
           }
