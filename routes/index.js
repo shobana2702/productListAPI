@@ -3,7 +3,7 @@ const router = express.Router();
 const mongodb = require("./db");
 //1.list Product
 router.get("/", function(req, res, next) {
-  mongodb.database(function() {
+  mongodb.database(res, function() {
     mongodb
       .getCollection()
       .find()

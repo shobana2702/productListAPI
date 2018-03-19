@@ -6,11 +6,12 @@ let collection;
 let dbClient;
 
 module.exports = {
-  database: function(callback) {
+  database: function(res, callback) {
     try {
       mongoClient.connect(mongoUrl, function(err, client) {
-        if (err) console.log(" Connection Error");
+        if (err) res.json(err);
         else {
+          //console.log(" Connection Error");
           db = client.db(dbName);
           dbClient = client;
           collection = db.collection(prodDocName);
