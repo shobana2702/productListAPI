@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const mongodb = require("./routes/db");
 
 app.use("/products", require("./routes/index"));
 
