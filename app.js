@@ -1,5 +1,5 @@
-const express = require("express");
-const app = express();
+const app = require("express")();
+
 const mongodb = require("./routes/db");
 
 app.use("/products", require("./routes/index"));
