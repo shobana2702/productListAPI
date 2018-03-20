@@ -1,19 +1,17 @@
 const mongoClient = require("mongodb").MongoClient;
-const mongoUrl = "mongodb://localhost:27017";
-const dbName = "OnlineFruitStore";
-const prodDocName = "Products";
+const config = require("../config/config.js");
 let collection;
 let dbClient;
 
 module.exports = {
   database: function(callback) {
     try {
-      mongoClient.connect(mongoUrl, (err, client) => {
+      mongoClient.connect(config.db.mongoUrl, (err, client) => {
         if (err) return callback(err);
         else {
-          db = client.db(dbName);
+          db = client.db(config.db.dbName);
           dbClient = client;
-          collection = db.collection(prodDocName);
+          collection = db.collection(config.db.prodColName);
           return callback();
         }
       });

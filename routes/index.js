@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const mongodb = require("./db");
+const mongodb = require("../dbUtil/db");
 //1.list Product
 router.get("/", (req, res, next) => {
   try {
