@@ -5,13 +5,13 @@ const mongodb = require("./routes/db");
 app.use("/products", require("./routes/index"));
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   var err = new Error();
   err.message = "Not Found";
   err.status = 404;
   next(err);
 });
-app.use(function(err, req, res, next) {
+app.use((err, req, res, next) => {
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
   res.status(err.status || 500);

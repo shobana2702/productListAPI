@@ -8,10 +8,9 @@ let dbClient;
 module.exports = {
   database: function(res, callback) {
     try {
-      mongoClient.connect(mongoUrl, function(err, client) {
+      mongoClient.connect(mongoUrl, (err, client) => {
         if (err) res.json(err);
         else {
-          //console.log(" Connection Error");
           db = client.db(dbName);
           dbClient = client;
           collection = db.collection(prodDocName);

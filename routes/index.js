@@ -2,12 +2,12 @@ const express = require("express");
 const router = express.Router();
 const mongodb = require("./db");
 //1.list Product
-router.get("/", function(req, res, next) {
-  mongodb.database(res, function() {
+router.get("/", (req, res) => {
+  mongodb.database(res, () => {
     mongodb
       .getCollection()
       .find()
-      .toArray(function(err, productResults) {
+      .toArray((err, productResults) => {
         if (err) {
           console.error(err);
           res.send(err);
