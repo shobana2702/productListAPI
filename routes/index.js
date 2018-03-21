@@ -6,7 +6,6 @@ router.get("/", (req, res, next) => {
   try {
     mongodb.database(err => {
       if (err) {
-        mongodb.closeDb();
         next(err);
       } else {
         mongodb
@@ -14,7 +13,6 @@ router.get("/", (req, res, next) => {
           .find()
           .toArray((err, productResults) => {
             if (err) {
-              mongodb.closeDb();
               next(err);
             } else {
               console.log("Products list from db", productResults);
