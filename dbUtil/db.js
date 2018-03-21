@@ -16,7 +16,7 @@ module.exports = {
         }
       });
     } catch (e) {
-      console.log(e);
+      return callback(err);
     }
   },
   getCollection: function() {
